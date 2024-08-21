@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {TilgungsplanService} from "./service/tilgungsplan.service";
 import {MatCard} from "@angular/material/card";
@@ -33,19 +33,14 @@ import {FormsModule} from "@angular/forms";
 @Component({
   selector: 'app-root',
   standalone: true,
-  providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'de'},
-    provideNativeDateAdapter()],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'de'}, provideNativeDateAdapter()],
   imports: [RouterOutlet, MatCard, MatTable, MatHeaderRow, MatRow, MatCell, MatHeaderCell, MatHint,
     MatColumnDef, NgIf, MatHeaderRowDef, MatRowDef, MatHeaderCellDef, MatCellDef, MatFooterCellDef,
     MatFooterCell, MatFooterRowDef, MatFooterRow, MatFormField, MatInput, MatLabel, MatButton, MatDatepickerToggle, MatDatepicker, MatDatepickerInput, MatIcon, FormsModule, MatIconButton],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit, AfterViewInit {
-
-  value = 'Clear me';
-
+export class AppComponent {
   darlehensbetrag: number = 100000.0;
   sollzinsProzent: number = 2.12;
   startTilgungProzent: number = 2;
@@ -53,29 +48,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   startDatum: Date = new Date();
 
   tilgungsplanResponse: TilgungsplanResponse = {} as TilgungsplanResponse;
+
   displayedColumns: string[] = ['datum', 'restschuldEuro', 'zinsenEuro', 'tilgungAuszahlungEuro', 'rateEuro'];
   dataSource = new MatTableDataSource<TilgungsplanEntry>(this.tilgungsplanResponse.tilgungsplanMonate);
 
-
   constructor(private tilgungsplanService: TilgungsplanService) {
-    // const request: TilgungsplanRequest = {
-    //   darlehensbetragEuro: this.darlehensbetrag,
-    //   sollzinsProzent: this.sollzinsProzent,
-    //   anfaenglicheTilgungProzent: this.startTilgungProzent,
-    //   zinsbindungJahre: this.zinsbindungJahre,
-    //   startdatum: this.startDatum
-    // };
-    // this.tilgungsplanService.getTilgungsplan(request).subscribe(response => {
-    //   this.tilgungsplanResponse = response;
-    //   this.dataSource = new MatTableDataSource<TilgungsplanEntry>(this.tilgungsplanResponse.tilgungsplanMonate);
-    // })
-  }
 
-  ngOnInit(): void {
-
-  }
-
-  ngAfterViewInit() {
   }
 
   onClickPlanErstellen(): void {
