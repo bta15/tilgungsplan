@@ -18,5 +18,6 @@
 - [ ] styling
 - [ ] Header der Tabelle auch sticky
 - [ ] Komponente testen
+- [ ] Icons funktionieren nicht
 - [ ] eslint einstellen
 - [ ] ...
