@@ -1,0 +1,28 @@
+.app-card {
+  margin: 50px;
+  padding: 10px;
+}
+
+.inputs {
+  margin-right: 20px;
+}
+
+.plan-erstellen-div {
+  display: flex;
+  justify-content: end;
+}
+
+.plan-erstellen-btn {
+  background-color: lightsteelblue;
+}
+
+.plan-tabelle {
+  position: relative;
+  min-height: 200px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+tr.mat-mdc-footer-row td {
+  font-weight: bold;
+}

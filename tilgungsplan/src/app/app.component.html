@@ -1,0 +1,84 @@
+<main class="main">
+  <mat-card class="app-card">
+    <h4>Bitte Felder ausfüllen, um einen Tilgungsplan zu erstellen</h4>
+    <form class="">
+      <mat-form-field class="inputs">
+        <mat-label>Startdatum</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="startDatum" name="startdatum">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="inputs">
+        <mat-label>Darlehensbetrag in €</mat-label>
+        <input matInput placeholder="Darlehensbetrag" [(ngModel)]="darlehensbetrag" name="darlehensbetrag">
+      </mat-form-field>
+
+      <mat-form-field class="inputs">
+        <mat-label>Sollzins in %</mat-label>
+        <input matInput placeholder="Sollzins (in Prozent)" [(ngModel)]="sollzinsProzent" name="sollzinsProzent">
+      </mat-form-field>
+
+      <mat-form-field class="inputs">
+        <mat-label>anfängliche Tilgung in %</mat-label>
+        <input matInput placeholder="anfängliche Tilgung (in Prozent)" [(ngModel)]="startTilgungProzent"
+               name="startTilgungProzent">
+      </mat-form-field>
+
+      <mat-form-field class="inputs">
+        <mat-label>Zinsbindung in Jahren</mat-label>
+        <input matInput placeholder="Zinsbindung in Jahren" [(ngModel)]="zinsbindungJahre" name="zinsbindungJahre">
+      </mat-form-field>
+      <br>
+      <div class="plan-erstellen-div">
+        <button class="plan-erstellen-btn" mat-button (click)="onClickPlanErstellen()">Plan erstellen</button>
+      </div>
+    </form>
+  </mat-card>
+
+  <mat-card class="app-card">
+    <h4>Ihr Tilgungsplan</h4>
+    <div *ngIf="!tilgungsplanResponse.tilgungsplanMonate">
+      <span>Bitte zuerst die Angaben eintragen und auf "Tilgungsplan erstellen" klicken</span>
+    </div>
+
+    <div class="mat-elevation-z8 plan-tabelle" *ngIf="tilgungsplanResponse && tilgungsplanResponse.tilgungsplanMonate">
+      <table mat-table [dataSource]="dataSource" class="">
+        <ng-container matColumnDef="datum">
+          <th mat-header-cell *matHeaderCellDef> Datum</th>
+          <td mat-cell *matCellDef="let element"> {{ element.datum }}</td>
+          <td mat-footer-cell *matFooterCellDef> Zinsbindungsende</td>
+        </ng-container>
+        <ng-container matColumnDef="restschuldEuro">
+          <th mat-header-cell *matHeaderCellDef> Restschuld</th>
+          <td mat-cell *matCellDef="let element"> {{ element.restschuldEuro }}€</td>
+          <td mat-footer-cell *matFooterCellDef> {{ tilgungsplanResponse.tilgungsplanEnde.restschuldEuro }}€</td>
+        </ng-container>
+        <ng-container matColumnDef="zinsenEuro">
+          <th mat-header-cell *matHeaderCellDef> Zinsen</th>
+          <td mat-cell *matCellDef="let element"> {{ element.zinsenEuro }}€</td>
+          <td mat-footer-cell *matFooterCellDef> {{ tilgungsplanResponse.tilgungsplanEnde.zinsenEuro }}€</td>
+        </ng-container>
+        <ng-container matColumnDef="tilgungAuszahlungEuro">
+          <th mat-header-cell *matHeaderCellDef> Tilgung(+)/Auszahlung(-)</th>
+          <td mat-cell *matCellDef="let element"> {{ element.tilgungAuszahlungEuro }}€</td>
+          <td mat-footer-cell *matFooterCellDef> {{ tilgungsplanResponse.tilgungsplanEnde.tilgungAuszahlungEuro }}€</td>
+        </ng-container>
+        <ng-container matColumnDef="rateEuro">
+          <th mat-header-cell *matHeaderCellDef> Rate</th>
+          <td mat-cell *matCellDef="let element"> {{ element.rateEuro }}€</td>
+          <td mat-footer-cell *matFooterCellDef> {{ tilgungsplanResponse.tilgungsplanEnde.rateEuro }}€</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+      </table>
+    </div>
+    <div>
+
+    </div>
+  </mat-card>
+</main>
+
+<router-outlet/>
