@@ -70,7 +70,7 @@
           <td mat-footer-cell *matFooterCellDef> {{ tilgungsplanResponse.tilgungsplanEnde.rateEuro }}€</td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
       </table>

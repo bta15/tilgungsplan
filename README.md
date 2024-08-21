@@ -14,9 +14,7 @@
 
 ### Weitere Entwicklungsmöglichkeiten:
 - [ ] Beträge in Euro formatieren, Datum in der Tabelle formatieren
-- [ ] Beträge haben Rundungsfehler (im Backend)
 - [ ] styling
-- [ ] Header der Tabelle auch sticky
 - [ ] Komponente testen
 - [ ] Icons funktionieren nicht
 - [ ] eslint einstellen
