@@ -6,7 +6,7 @@
 - der anfänglichen Tilgung (in Prozent)
 - der Zinsbindung (in Jahren)
 - den Tilgungsplan eines Darlehens mit gleichbleibender Rate erstellen kann
-- Startdatum
+- Startdatum (Default = heute)
 
 ### Benutzung:
 - im Backend ```TilgungsplanApplication.java``` starten
@@ -18,5 +18,6 @@
 - [ ] Tests
 - [ ] eslint einstellen
 - [ ] Drucken-Funktion implementieren und stylen
+- [ ] Beim Startdatum-Datepicker nur Monat und Jahr eingeben, da der Tag immer das Ende eines Monats sein soll
 - [x] Icons funktionieren nicht
 - [ ] ...
