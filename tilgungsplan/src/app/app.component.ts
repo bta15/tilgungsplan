@@ -3,40 +3,38 @@ import {RouterOutlet} from '@angular/router';
 import {TilgungsplanService} from "./service/tilgungsplan.service";
 import {MatCard} from "@angular/material/card";
 import {TilgungsplanEntry, TilgungsplanResponse} from "./entity/tilgungsplan-response";
-import {
-  MatCell,
-  MatCellDef,
-  MatColumnDef,
-  MatFooterCell,
-  MatFooterCellDef,
-  MatFooterRow,
-  MatFooterRowDef,
-  MatHeaderCell,
-  MatHeaderCellDef,
-  MatHeaderRow,
-  MatHeaderRowDef,
-  MatRow,
-  MatRowDef,
-  MatTable,
-  MatTableDataSource
-} from "@angular/material/table";
+import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {NgIf} from "@angular/common";
 import {MatFormField, MatHint, MatLabel} from "@angular/material/form-field";
-import {MatInput} from "@angular/material/input";
-import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatButton, MatIconButton, MatMiniFabButton} from "@angular/material/button";
 import {TilgungsplanRequest} from "./entity/tilgungsplan-request";
-import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
-import {MAT_DATE_LOCALE, provideNativeDateAdapter} from "@angular/material/core";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {provideNativeDateAdapter} from "@angular/material/core";
 import {MatIcon} from "@angular/material/icon";
 import {FormsModule} from "@angular/forms";
+
+// export const MY_FORMATS = {
+//   parse: {
+//     dateInput: 'LL',
+//   },
+//   display: {
+//     dateInput: 'LL',
+//     monthYearLabel: 'M.YYYY',
+//     dateA11yLabel: 'LL',
+//     monthYearA11yLabel: 'D.M.YYYY',
+//   },
+// };
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  providers: [{provide: MAT_DATE_LOCALE, useValue: 'de'}, provideNativeDateAdapter()],
-  imports: [RouterOutlet, MatCard, MatTable, MatHeaderRow, MatRow, MatCell, MatHeaderCell, MatHint,
-    MatColumnDef, NgIf, MatHeaderRowDef, MatRowDef, MatHeaderCellDef, MatCellDef, MatFooterCellDef,
-    MatFooterCell, MatFooterRowDef, MatFooterRow, MatFormField, MatInput, MatLabel, MatButton, MatDatepickerToggle, MatDatepicker, MatDatepickerInput, MatIcon, FormsModule, MatIconButton],
+  providers: [provideNativeDateAdapter()],
+  imports: [
+    RouterOutlet, MatCard, MatHint, NgIf, MatFormField, MatLabel, MatButton, MatIcon, MatIconButton, MatMiniFabButton,
+    MatDatepickerModule, MatInputModule, MatTableModule, FormsModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -57,6 +55,7 @@ export class AppComponent {
   }
 
   onClickPlanErstellen(): void {
+    //TODO: Es wird immer DatePicker-Startdatum - 1 Tag geschickt! Warum?
     const request: TilgungsplanRequest = {
       darlehensbetragEuro: this.darlehensbetrag,
       sollzinsProzent: this.sollzinsProzent,
@@ -68,6 +67,11 @@ export class AppComponent {
       this.tilgungsplanResponse = response;
       this.dataSource = new MatTableDataSource<TilgungsplanEntry>(this.tilgungsplanResponse.tilgungsplanMonate);
     })
+  }
+
+  onClickPrintTable(): void {
+    //TODO: als PDF drucken später implementieren
+    console.log("Als PDF drucken (noch nicht implementiert)")
   }
 
 

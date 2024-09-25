@@ -1,4 +1,5 @@
 <main class="main">
+
   <mat-card class="app-card">
     <h4>Bitte Felder ausfüllen, um einen Tilgungsplan zu erstellen</h4>
     <form class="">
@@ -43,6 +44,12 @@
     </div>
 
     <div class="mat-elevation-z8 plan-tabelle" *ngIf="tilgungsplanResponse && tilgungsplanResponse.tilgungsplanMonate">
+      <div>
+        <button mat-mini-fab aria-label="Tabelle Drucken (noch nicht implementiert)"
+        (click)="onClickPrintTable()">
+          <mat-icon>print</mat-icon>
+        </button>
+      </div>
       <table mat-table [dataSource]="dataSource" class="">
         <ng-container matColumnDef="datum">
           <th mat-header-cell *matHeaderCellDef> Datum</th>

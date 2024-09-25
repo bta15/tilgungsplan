@@ -15,7 +15,8 @@
 ### Weitere Entwicklungsmöglichkeiten:
 - [ ] Beträge in Euro formatieren, Datum in der Tabelle formatieren
 - [ ] styling
-- [ ] Komponente testen
-- [ ] Icons funktionieren nicht
+- [ ] Tests
 - [ ] eslint einstellen
+- [ ] Drucken-Funktion implementieren und stylen
+- [x] Icons funktionieren nicht
 - [ ] ...

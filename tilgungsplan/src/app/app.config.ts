@@ -1,14 +1,17 @@
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {ApplicationConfig, importProvidersFrom} from '@angular/core';
+import {provideRouter} from '@angular/router';
 
-import { routes } from './app.routes';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {routes} from './app.routes';
 import {provideHttpClient, withFetch} from "@angular/common/http";
+import {provideAnimations} from "@angular/platform-browser/animations";
+import {MatNativeDateModule} from "@angular/material/core";
+import {ReactiveFormsModule} from "@angular/forms";
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideAnimationsAsync(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    provideAnimations(),
+    importProvidersFrom(MatNativeDateModule, ReactiveFormsModule),
   ],
 };
