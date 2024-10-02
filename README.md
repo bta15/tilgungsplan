@@ -13,11 +13,12 @@
 - im Frontend zu tilgungsplan navigieren und im Terminal ```ng serve``` eingeben
 
 ### Weitere Entwicklungsmöglichkeiten:
-- [ ] Beträge in Euro formatieren, Datum in der Tabelle formatieren
 - [ ] styling
 - [ ] Tests
 - [ ] eslint einstellen
 - [ ] Drucken-Funktion implementieren und stylen
-- [ ] Beim Startdatum-Datepicker nur Monat und Jahr eingeben, da der Tag immer das Ende eines Monats sein soll
+- [ ] Monatsnamen im Datepicker sind noch auf Englisch?!
+- [x] Beträge in Euro formatieren, Datum in der Tabelle formatieren
+- [x] Beim Startdatum-Datepicker nur Monat und Jahr eingeben, da der Tag immer das Ende eines Monats sein soll
 - [x] Icons funktionieren nicht
 - [ ] ...
