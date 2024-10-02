@@ -17,7 +17,7 @@
 - [ ] Tests
 - [ ] eslint einstellen
 - [ ] Drucken-Funktion implementieren und stylen
-- [ ] Monatsnamen im Datepicker sind noch auf Englisch?!
+- [x] Monatsnamen im Datepicker sind noch auf Englisch?!
 - [x] Beträge in Euro formatieren, Datum in der Tabelle formatieren
 - [x] Beim Startdatum-Datepicker nur Monat und Jahr eingeben, da der Tag immer das Ende eines Monats sein soll
 - [x] Icons funktionieren nicht
