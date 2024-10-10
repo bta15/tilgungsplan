@@ -20,7 +20,9 @@ import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import * as _moment from "moment";
 import {default as _rollupMoment, Moment} from "moment";
 import {CurrencyMaskModule} from "ng2-currency-mask";
-import 'moment/locale/de'; //workaround für ein moment-Bug, da sonst im Datepicker alles auf Englisch ist
+import 'moment/locale/de';
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable"; //workaround für ein moment-Bug, da sonst im Datepicker alles auf Englisch ist
 
 
 const moment = _rollupMoment || _moment;
@@ -76,8 +78,10 @@ export class AppComponent {
   }
 
   onClickPrintTable(): void {
-    //TODO: als PDF drucken später implementieren
-    console.log("Als PDF drucken (noch nicht implementiert)")
+    const doc = new jsPDF();
+    autoTable(doc, {html: '#tabelle'})
+
+    doc.save('tilgungsplan.pdf')
   }
 
 

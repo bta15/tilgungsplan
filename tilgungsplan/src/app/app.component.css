@@ -12,6 +12,12 @@
   justify-content: end;
 }
 
+.plan-download-div {
+  display: flex;
+  justify-content: end;
+  margin: 25px 0;
+}
+
 .plan-erstellen-btn {
   background-color: lightsteelblue;
 }
